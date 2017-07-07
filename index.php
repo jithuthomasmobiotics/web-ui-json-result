@@ -32,6 +32,11 @@ if($method!='GET')
 
 }
 
+$parts = parse_url($request);
+$path_parts = pathinfo($parts['path']);
+$id = $path_parts['filename'];
+echo $id;
+
 $result = getResponseResult($_GET);
 
 
