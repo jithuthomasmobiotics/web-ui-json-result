@@ -32,15 +32,12 @@ if($method!='GET')
 
 }
 
+
 $parts = parse_url($request);
 $path_parts = pathinfo($parts['path']);
 $id = $path_parts['filename'];
-if(empty($id)){
-   echo "empty";
-}
-echo $id;
 
-$result = getResponseResult($_GET);
+$result = getResponseResult($id,$_GET);
 
 
 print json_encode($result);
