@@ -21,7 +21,24 @@ function getResponseResult($id=null,$params){
 
         if (!is_numeric($id))
         {
-            return array('error'=>1002,'reason'=>'Not Numeric Value');
+            if($id == 'test'){
+
+                $maxcount = count($initialarray);
+
+                if(isset($params['count'])){
+
+                    if(!is_numeric($params['count']) || ($params['count'] > $maxcount)){
+                        return array('error'=>1001,'reason'=>'Invalid Count');
+                    }
+
+                }
+
+                $output = array_slice($initialarray, 0, $params['count']);
+
+            }else{
+
+                return array('error'=>1002,'reason'=>'Not Numeric Value');
+            }
         }else{
 
             $maxcount = count($resultarray);
